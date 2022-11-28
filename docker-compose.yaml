@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  transactions_mc:
+    container_name: financial_application_transaction_microservice
+    image: golang:latest
+    restart: 'always'
+    build: .
+    tty: true
+    volumes:
+      - ./:/go/src/app
+    environment:
+      - GOPATH:/go/modules
+
+networks:
+  default:
+    external:
+      name: financial-network
